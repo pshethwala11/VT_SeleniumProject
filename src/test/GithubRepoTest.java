@@ -4,32 +4,48 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.apache.log4j.Logger;
 import pages.GithubRepoWebPage;
+import pages.SearchRepoPage;
 
 
 public class GithubRepoTest extends BaseTest{
-	static Logger log = Logger.getLogger(GithubRepoTest.class.getName());  
+	static Logger log = Logger.getLogger(GithubRepoTest.class.getName());
+
+    GithubRepoWebPage githubRepoWeb;
+    SearchRepoPage searchRepoWeb;
 
     @Test
     public void getAllRepositories() throws Exception {
-        
-    	GithubRepoWebPage githubRepoWeb =new GithubRepoWebPage(driver);
+
+        githubRepoWeb = new GithubRepoWebPage(driver);
 
         // Verify project name
-        Assert.assertEquals(githubRepoWeb.myProject(),"Django");
+        Assert.assertEquals(githubRepoWeb.myProject(), "Django");
 
-    	log.info("CLICK REPOSITORY TAB");
-    	githubRepoWeb.repository();
-    	
+        log.info("CLICK REPOSITORY TAB");
+        githubRepoWeb.repository();
+
         Thread.sleep(1000);
-        
+
         log.info("LIST ALL REPOSITORIES");
         githubRepoWeb.webRepositories();
-    	
-    	Thread.sleep(1000);
+
+
+    }
+        @Test
+        public void searchRepository() throws Exception {
+
+        searchRepoWeb = new SearchRepoPage(driver);
+
+        log.info("SEARCH REPOSITORIES");
+        searchRepoWeb.selectRepo("deps");
+
+        Thread.sleep(1000);
+
+        Assert.assertEquals(searchRepoWeb.message(), "1 repository result or view all results on GitHub");
         		
          }
-        
-    }
+
+}
     
 
 
