@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +25,6 @@ public class SearchRepoPage implements GithubConstants {
 	public void selectRepo(String repo) {
 		search_Repo.sendKeys(repo);
 		search_Repo.sendKeys(Keys.RETURN);
-
 	}
 
 	public String message() {
