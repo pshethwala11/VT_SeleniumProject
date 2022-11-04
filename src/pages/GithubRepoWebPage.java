@@ -58,17 +58,6 @@ public class GithubRepoWebPage implements GithubConstants {
 
 	}
 
-	public void selectRepo(String repo) {
-		search_Repo.sendKeys(repo);
-		select_Repo.click();
-
-	}
-
-	public String message() {
-		return message.getText();
-	}
-
-
 }
 				      
 
